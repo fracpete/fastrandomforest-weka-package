@@ -1,17 +1,16 @@
 /*
- *    This program is free software; you can redistribute it and/or modify
- *    it under the terms of the GNU General Public License as published by
- *    the Free Software Foundation; either version 2 of the License, or
- *    (at your option) any later version.
+ *   This program is free software: you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation, either version 3 of the License, or
+ *   (at your option) any later version.
  *
- *    This program is distributed in the hope that it will be useful,
- *    but WITHOUT ANY WARRANTY; without even the implied warranty of
- *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *    GNU General Public License for more details.
+ *   This program is distributed in the hope that it will be useful,
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *   GNU General Public License for more details.
  *
- *    You should have received a copy of the GNU General Public License
- *    along with this program; if not, write to the Free Software
- *    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ *   You should have received a copy of the GNU General Public License
+ *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 /*
@@ -116,11 +115,11 @@ class FastRfBagging extends RandomizableIteratedSingleClassifierEnhancer
       curTree.m_MotherForest = motherForest;
       // 0.99: reference to these arrays will get passed down all nodes so the array can be re-used 
       // 0.99: this array is of size two as now all splits are binary - even categorical ones
-      curTree.tempProps = new double[2]; 
-      curTree.tempDists = new double[2][]; 
+      curTree.tempProps = new double[2];
+      curTree.tempDists = new double[2][];
       curTree.tempDists[0] = new double[data.numClasses()];
       curTree.tempDists[1] = new double[data.numClasses()];
-      curTree.tempDistsOther = new double[2][]; 
+      curTree.tempDistsOther = new double[2][];
       curTree.tempDistsOther[0] = new double[data.numClasses()];
       curTree.tempDistsOther[1] = new double[data.numClasses()];
       m_Classifiers[i] = curTree;
@@ -277,8 +276,8 @@ class FastRfBagging extends RandomizableIteratedSingleClassifierEnhancer
    * @return the oob error
    */
   private double computeOOBError( DataCache data,
-                                 boolean[][] inBag,
-                                 ExecutorService threadPool ) throws InterruptedException, ExecutionException {
+                                  boolean[][] inBag,
+                                  ExecutorService threadPool ) throws InterruptedException, ExecutionException {
 
 
     List<Future<Double>> votes =
@@ -303,12 +302,12 @@ class FastRfBagging extends RandomizableIteratedSingleClassifierEnhancer
     }
 
     return errorSum / outOfBagCount;
-    
+
   }
-  
-  
-  
-  
+
+
+
+
   ////////////////////////////
   // Feature importances stuff
   ////////////////////////////
@@ -342,15 +341,15 @@ class FastRfBagging extends RandomizableIteratedSingleClassifierEnhancer
   public double[] getFeatureImportances() {
     return m_FeatureImportances;
   }
-  
+
   /** Used when displaying feature importances. */
   //private String[] m_FeatureNames; 
-  
+
   /** Available only if feature importances have been computed. */
   //public String[] getFeatureNames() {
   //  return m_FeatureNames;
   //}
-  
+
 
   ////////////////////////////
   // /Feature importances stuff

@@ -1,17 +1,16 @@
 /*
- *    This program is free software; you can redistribute it and/or modify
- *    it under the terms of the GNU General Public License as published by
- *    the Free Software Foundation; either version 2 of the License, or
- *    (at your option) any later version.
+ *   This program is free software: you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation, either version 3 of the License, or
+ *   (at your option) any later version.
  *
- *    This program is distributed in the hope that it will be useful,
- *    but WITHOUT ANY WARRANTY; without even the implied warranty of
- *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *    GNU General Public License for more details.
+ *   This program is distributed in the hope that it will be useful,
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *   GNU General Public License for more details.
  *
- *    You should have received a copy of the GNU General Public License
- *    along with this program; if not, write to the Free Software
- *    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ *   You should have received a copy of the GNU General Public License
+ *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 /*
@@ -95,7 +94,7 @@ import java.util.Vector;
 public class FastRandomForest
   extends AbstractClassifier
   implements OptionHandler, Randomizable, WeightedInstancesHandler,
-             AdditionalMeasureProducer, TechnicalInformationHandler{
+  AdditionalMeasureProducer, TechnicalInformationHandler{
 
   /** for serialization */
   static final long serialVersionUID = 4216839470751428700L;
@@ -321,7 +320,7 @@ public class FastRandomForest
    * The value of the features importances.
    */
   private double[] m_FeatureImportances;
-  
+
   /**
    * Whether to compute the importances or not.
    */
@@ -341,7 +340,7 @@ public class FastRandomForest
     m_computeImportances = computeImportances;
   }
 
-  
+
 
   /**
    * Gets the out of bag error that was calculated as the classifier was built.
@@ -423,7 +422,7 @@ public class FastRandomForest
     newVector.addElement(new Option(
       "\tWhether to compute feature importances.\n",
       "import", 0, "-import"));
-    
+
     Enumeration enu = super.listOptions();
     while(enu.hasMoreElements()){
       newVector.addElement(enu.nextElement());
@@ -462,10 +461,10 @@ public class FastRandomForest
       result.add("-threads");
       result.add("" + getNumThreads());
     }
-    
+
     if (getComputeImportances()) {
       result.add("-import");
-    }    
+    }
 
     options = super.getOptions();
     for(i = 0; i < options.length; i++)
@@ -613,7 +612,7 @@ public class FastRandomForest
     rTree.m_MotherForest = this; // allows to retrieve KValue and MaxDepth
     // some temporary arrays which need to be separate for every tree, so
     // that the trees can be trained in parallel in different threads
-    
+
     // set up the bagger and build the forest
     m_bagger.setClassifier(rTree);
     m_bagger.setSeed(m_randomSeed);
@@ -622,7 +621,7 @@ public class FastRandomForest
     m_bagger.setComputeImportances( this.getComputeImportances() );
 
     m_bagger.buildClassifier(data, m_NumThreads, this);
-    
+
   }
 
 
@@ -653,7 +652,7 @@ public class FastRandomForest
   public String toString(){
 
     StringBuilder sb = new StringBuilder();
-    
+
     if(m_bagger == null)
       sb.append("FastRandomForest not built yet");
     else {
@@ -668,11 +667,11 @@ public class FastRandomForest
         double[] importances = m_bagger.getFeatureImportances();
         for ( int i = 0; i < importances.length; i++ ) {
           sb.append( String.format( "%d\t%s\t%6.4f%%\n", i+1, this.m_Info.attribute(i).name(),
-                  i==m_Info.classIndex() ? Double.NaN : importances[i]*100.0 ) ); //bagger.getFeatureNames()[i] );
+            i==m_Info.classIndex() ? Double.NaN : importances[i]*100.0 ) ); //bagger.getFeatureNames()[i] );
         }
       }
     }
-    
+
     return sb.toString();
   }
 

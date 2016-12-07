@@ -23,7 +23,7 @@ Author=Fran Supek
 Maintainer=Peter Reutemann <fracpete@waikato.ac.nz>
 
 # License (required)
-License=GPL 2.0
+License=GPL 3.0
 
 # Description (required)
 Description=Fast Random Forest implementation, originally developed by Fran Supek (https://code.google.com/archive/p/fast-random-forest/).
