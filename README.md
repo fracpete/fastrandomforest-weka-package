@@ -8,6 +8,16 @@ Fork of original project hosted on Google Code:
 https://code.google.com/archive/p/fast-random-forest/
 
 
+Classifier
+----------
+
+The full classname of the classifier implementation:
+
+```
+hr.irb.fastRandomForest.FastRandomForest
+```
+
+
 Releases
 --------
 
