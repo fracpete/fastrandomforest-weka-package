@@ -1,0 +1,15 @@
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.next
+release.properties
+*~
+*.swp
+.project
+.classpath
+.settings/
+build/
+dist/
+doc/
+*.iml
+.idea
