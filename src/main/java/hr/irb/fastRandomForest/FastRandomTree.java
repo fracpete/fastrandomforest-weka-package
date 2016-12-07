@@ -105,6 +105,17 @@ class FastRandomTree
   protected static final int m_MinNum = 1;
 
   /**
+   * The description of this classifier.
+   *
+   * @return		the description
+   */
+  public String globalInfo() {
+    return "Based on the 'weka.classifiers.trees.RandomTree' class, revision 1.19, "
+      + "by Eibe Frank and Richard Kirkby, with major modifications made to improve "
+      + "the speed of classifier training.";
+  }
+
+  /**
    * Get the value of MinNum.
    *
    * @return Value of MinNum.
@@ -112,16 +123,6 @@ class FastRandomTree
   public final int getMinNum() {
 
     return m_MinNum;
-  }
-
-
-  /**
-   * Returns the tip text for this property
-   * @return tip text for this property suitable for
-   * displaying in the explorer/experimenter gui
-   */
-  public String KValueTipText() {
-    return "Sets the number of randomly chosen attributes.";
   }
 
 

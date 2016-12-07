@@ -340,6 +340,15 @@ public class FastRandomForest
     m_computeImportances = computeImportances;
   }
 
+  /**
+   * Returns the tip text for this property
+   *
+   * @return tip text for this property suitable for
+   *         displaying in the explorer/experimenter gui
+   */
+  public String computeImportancesTipText(){
+    return "Whether to compute feature importances?.";
+  }
 
 
   /**
@@ -564,7 +573,12 @@ public class FastRandomForest
    * @return the capabilities of this classifier
    */
   public Capabilities getCapabilities(){
-    return new FastRandomTree().getCapabilities();
+    Capabilities	result;
+
+    result = new FastRandomTree().getCapabilities();
+    result.setOwner(this);
+
+    return result;
   }
 
 

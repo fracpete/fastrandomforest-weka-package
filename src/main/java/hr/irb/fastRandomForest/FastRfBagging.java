@@ -77,6 +77,20 @@ class FastRfBagging extends RandomizableIteratedSingleClassifierEnhancer
   static final long serialVersionUID = -505879962237199702L;
 
   /**
+   * Returns default capabilities of the classifier.
+   *
+   * @return the capabilities of this classifier
+   */
+  public Capabilities getCapabilities(){
+    Capabilities	result;
+
+    result = new FastRandomTree().getCapabilities();
+    result.setOwner(this);
+
+    return result;
+  }
+
+  /**
    * Bagging method. Produces DataCache objects with bootstrap samples of
    * the original data, and feeds them to the base classifier (which can only
    * be a FastRandomTree).
@@ -382,8 +396,7 @@ class FastRfBagging extends RandomizableIteratedSingleClassifierEnhancer
    * Constructor.
    */
   public FastRfBagging() {
-
-    m_Classifier = new hr.irb.fastRandomForest.FastRandomTree();
+    m_Classifier = new FastRandomTree();
   }
 
 
@@ -407,7 +420,7 @@ class FastRfBagging extends RandomizableIteratedSingleClassifierEnhancer
    */
   @Override
   protected String defaultClassifierString() {
-    return "hr.irb.fastRandomForest.FastRfTree";
+    return FastRandomTree.class.getName();
   }
 
 
@@ -684,16 +697,16 @@ class FastRfBagging extends RandomizableIteratedSingleClassifierEnhancer
     return text.toString();
   }
 
+  public String getRevision() {
+    return RevisionUtils.extract("$Revision: 0.99$");
+  }
+
   /**
    * Main method for testing this class.
    *
-   * @param argv the options
+   * @param args the options
    */
-  public static void main(String[] argv) {
-    runClassifier(new FastRfBagging(), argv);
-  }
-
-  public String getRevision() {
-    return RevisionUtils.extract("$Revision: 0.99$");
+  public static void main(String[] args) {
+    runClassifier(new FastRfBagging(), args);
   }
 }
