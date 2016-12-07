@@ -204,7 +204,7 @@
             <disableXmlReport>true</disableXmlReport>
             <redirectTestOutputToFile>true</redirectTestOutputToFile>
             <systemPropertyVariables>
-              <weka.test.Regression.root>src/test/resources/wekarefs</weka.test.Regression.root>
+              <weka.test.Regression.root>src/test/resources</weka.test.Regression.root>
             </systemPropertyVariables>
           </configuration>
         </plugin>
@@ -285,7 +285,7 @@
         <version>2.8.1</version>
         <configuration>
           <maxmemory>256m</maxmemory>
-          <subpackages>weka:org</subpackages>
+          <subpackages>hr</subpackages>
           <show>public</show>
           <outputDirectory>${project.basedir}/doc</outputDirectory>
         </configuration>

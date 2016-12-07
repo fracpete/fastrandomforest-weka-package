@@ -33,21 +33,21 @@ import java.util.Vector;
 /**
  * Based on the "weka.classifiers.trees.RandomForest" class, revision 1.12,
  * by Richard Kirkby, with minor modifications:
- * <p/>
+ * <br>
  * - uses FastRfBagger with FastRandomTree, instead of Bagger with RandomTree.
  * - stores dataset header (instead of every Tree storing its own header)
  * - checks if only ZeroR model is possible (instead of each Tree checking)
  * - added "-threads" option
- * <p/>
+ * <br>
  * <!-- globalinfo-start -->
- * Class for constructing a forest of random trees.<br/>
- * <br/>
- * For more information see: <br/>
- * <br/>
+ * Class for constructing a forest of random trees.<br>
+ * <br>
+ * For more information see: <br>
+ * <br>
  * Leo Breiman (2001). Random Forests. Machine Learning. 45(1):5-32.
- * <p/>
+ * <br>
  * <!-- globalinfo-end -->
- * <p/>
+ * <br>
  * <!-- technical-bibtex-start -->
  * BibTeX:
  * <pre>
@@ -61,30 +61,30 @@ import java.util.Vector;
  *    year = {2001}
  * }
  * </pre>
- * <p/>
+ * <br>
  * <!-- technical-bibtex-end -->
- * <p/>
+ * <br>
  * <!-- options-start -->
- * Valid options are: <p/>
- * <p/>
+ * Valid options are: <br>
+ * <br>
  * <pre> -I &lt;number of trees&gt;
  *  Number of trees to build.</pre>
- * <p/>
+ * <br>
  * <pre> -K &lt;number of features&gt;
  *  Number of features to consider (&lt;1=int(logM+1)).</pre>
- * <p/>
+ * <br>
  * <pre> -S
  *  Seed for random number generator.
  *  (default 1)</pre>
- * <p/>
+ * <br>
  * <pre> -depth &lt;num&gt;
  *  The maximum depth of the trees, 0 for unlimited.
  *  (default 0)</pre>
- * <p/>
+ * <br>
  * <pre> -D
  *  If set, classifier is run in debug mode and
  *  may output additional info to the console</pre>
- * <p/>
+ * <br>
  * <!-- options-end -->
  *
  * @author Richard Kirkby (rkirkby@cs.waikato.ac.nz) - original code
@@ -484,36 +484,36 @@ public class FastRandomForest
 
 
   /**
-   * Parses a given list of options. <p/>
-   * <p/>
+   * Parses a given list of options. <br>
+   * <br>
    * <!-- options-start -->
-   * Valid options are: <p/>
-   * <p/>
+   * Valid options are: <br>
+   * <br>
    * <pre> -I &lt;number of trees&gt;
    *  Number of trees to build.</pre>
-   * <p/>
+   * <br>
    * <pre> -K &lt;number of features&gt;
    *  Number of features to consider (&lt;1=int(logM+1)).</pre>
-   * <p/>
+   * <br>
    * <pre> -S
    *  Seed for random number generator.
    *  (default 1)</pre>
-   * <p/>
+   * <br>
    * <pre> -depth &lt;num&gt;
    *  The maximum depth of the trees, 0 for unlimited.
    *  (default 0)</pre>
-   * <p/>
+   * <br>
    * <pre> -threads
    *  Number of simultaneous threads to use.
    *  (default 0 = autodetect number of available cores)</pre>
-   * <p/>
+   * <br>
    * <pre> -import
    *  Compute and output RF feature importances (slow).</pre>
-   * <p/>
+   * <br>
    * <pre> -D
    *  If set, classifier is run in debug mode and
    *  may output additional info to the console</pre>
-   * <p/>
+   * <br>
    * <!-- options-end -->
    *
    * @param options the list of options as an array of strings

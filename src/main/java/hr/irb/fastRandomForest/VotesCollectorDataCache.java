@@ -32,7 +32,7 @@ import java.util.concurrent.Callable;
  * 
  * In classification, does not return the class distribution, but only the class
  * index of the dominant class.
- * <p/>
+ * <br>
  * Implements callable so it can be run in multiple threads.
  *
  * @author Fran Supek

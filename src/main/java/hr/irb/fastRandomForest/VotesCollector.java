@@ -30,7 +30,7 @@ import java.util.concurrent.Callable;
  * Used to retrieve the out-of-bag vote of an ensemble classifier for a single
  * instance. In classification, does not return the class distribution but only
  * class index of the dominant class.
- * <p/>
+ * <br>
  * Implements callable so it can be run in multiple threads.
  *
  * @author Fran Supek
