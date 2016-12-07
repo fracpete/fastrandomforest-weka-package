@@ -7,16 +7,16 @@ Preparation
 * Change the artifact ID in `pom.xml` to today's date, e.g.:
 
   ```
-  2014.12.31-SNAPSHOT
+  2016.12.7-SNAPSHOT
   ```
 
 * Update the version, date and URL in `Description.props` to reflect new
   version, e.g.:
 
   ```
-  Version=2014.12.31
-  Date=2014-12-31
-  PackageURL=https://github.com/fracpete/graphviz-treevisualize-weka-package/releases/download/v2014.12.31/graphviz-treevisualize-2014.12.31.zip
+  Version=2016.12.7
+  Date=2016-12-07
+  PackageURL=https://github.com/fracpete/fastrandomforest-weka-package/releases/download/v2016.12.7/fastrandomforest-2016.12.7.zip
   ```
 
 Weka package
@@ -24,13 +24,13 @@ Weka package
 
 * Commit/push all changes
 
-* Run the following command to generate the package archive for version `1.0.0`:
+* Run the following command to generate the package archive for version `2016.12.7`:
 
   ```
-  ant -f build_package.xml -Dpackage=graphviz-treevisualize-1.0.0 clean make_package
+  ant -f build_package.xml -Dpackage=fastrandomforest-2016.12.7 clean make_package
   ```
 
-* Create a release tag on github (v1.0.0)
+* Create a release tag on github (v2016.12.7)
 * add release notes
 * upload package archive from `dist`
 
@@ -51,4 +51,3 @@ Maven
   ```
   git push
   ````
-
