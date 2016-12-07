@@ -1,0 +1,4 @@
+# classifiers
+weka.classifiers.Classifier=\
+  hr.irb.fastRandomForest
+
