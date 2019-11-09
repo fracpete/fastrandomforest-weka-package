@@ -302,8 +302,8 @@ public class DataCache {
   /**
    * Returns a random number generator. The initial seed of the random
    * number generator depends on the given seed and the contents of the
-   * sortedIndices array (a single attribute is picked, its sortedIndices
-   * converted to String and a hashcode computed).
+   * sortedIndices array (a single attribute is picked, a hashcode of its
+   * sortedIndices is computed).
    *
    * @param seed the given seed
    * @return the random number generator
@@ -311,9 +311,7 @@ public class DataCache {
   public Random getRandomNumberGenerator(long seed) {
 
     Random r = new Random(seed);
-    long dataSignature
-            = Arrays.toString( sortedIndices[ r.nextInt( numAttributes ) ] )
-            .hashCode();
+    long dataSignature = Arrays.hashCode( sortedIndices[ r.nextInt( numAttributes ) ] );
     r.setSeed( dataSignature + seed );
     return r;
     
