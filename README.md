@@ -21,6 +21,7 @@ hr.irb.fastRandomForest.FastRandomForest
 Releases
 --------
 
+* [2019.11.10](https://github.com/fracpete/fastrandomforest-weka-package/releases/download/v2019.11.10/fastrandomforest-2019.11.10.zip)
 * [2016.12.7](https://github.com/fracpete/fastrandomforest-weka-package/releases/download/v2016.12.7/fastrandomforest-2016.12.7.zip)
 
 
@@ -41,7 +42,7 @@ Add the following dependency in your `pom.xml` to include the package:
     <dependency>
       <groupId>com.github.fracpete</groupId>
       <artifactId>fastrandomforest-weka-package</artifactId>
-      <version>2016.12.7</version>
+      <version>2019.11.10</version>
       <type>jar</type>
       <exclusions>
         <exclusion>
