@@ -5,10 +5,10 @@
 PackageName=fastrandomforest
 
 # Version (required)
-Version=2016.12.07
+Version=2019.11.10
 
 #Date (year-month-day)
-Date=2016-12-07
+Date=2019-11-10
 
 # Title (required)
 Title=Fast Random Forest
@@ -29,7 +29,7 @@ License=GPL 3.0
 Description=Fast Random Forest implementation, originally developed by Fran Supek (https://code.google.com/archive/p/fast-random-forest/).
 
 # Package URL for obtaining the package archive (required)
-PackageURL=https://github.com/fracpete/fastrandomforest-weka-package/releases/download/v2016.12.7/fastrandomforest-2016.12.7.zip
+PackageURL=https://github.com/fracpete/fastrandomforest-weka-package/releases/download/v2019.11.10/fastrandomforest-2019.11.10.zip
 
 # URL for further information
 URL=https://github.com/fracpete/fastrandomforest-weka-package
