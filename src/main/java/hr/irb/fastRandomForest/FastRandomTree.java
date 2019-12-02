@@ -240,55 +240,38 @@ class FastRandomTree
    */
   @Override
   public double[] distributionForInstance(Instance instance) throws Exception {
+    FastRandomTree currentTree = this;
 
-    double[] returnedDist = null;
-
-    if (m_Attribute > -1) {  // ============================ node is not a leaf
-
-      if (instance.isMissing(m_Attribute)) {  // ---------------- missing value
-
-        returnedDist = new double[m_MotherForest.m_Info.numClasses()];
+    while (currentTree.m_Attribute > -1) { //while the current tree is not a leaf
+      if (instance.isMissing(currentTree.m_Attribute)) { // missing value
+        double[] returnedDist = new double[m_MotherForest.m_Info.numClasses()];
         // split instance up
-        for (int i = 0; i < m_Successors.length; i++) {
-          double[] help = m_Successors[i].distributionForInstance(instance);
+        for (int i = 0; i < currentTree.m_Successors.length; i++) {
+          double[] help = currentTree.m_Successors[i].distributionForInstance(instance);
           if (help != null) {
             for (int j = 0; j < help.length; j++) {
-              returnedDist[j] += m_Prop[i] * help[j];
+              returnedDist[j] += currentTree.m_Prop[i] * help[j];
             }
           }
         }
-
-      } else if (m_MotherForest.m_Info
-        .attribute(m_Attribute).isNominal()) { // ------ nominal
-
-        //returnedDist = m_Successors[(int) instance.value(m_Attribute)]
-        //        .distributionForInstance(instance);
-
+        return returnedDist;
+      } else if (m_MotherForest.m_Info.attribute(currentTree.m_Attribute).isNominal()) { //nominal attributes
         // 0.99: new - binary splits (also) for nominal attributes
-        if ( instance.value(m_Attribute) == m_SplitPoint ) {
-          returnedDist = m_Successors[0].distributionForInstance(instance);
+        if (instance.value(currentTree.m_Attribute) == currentTree.m_SplitPoint) {
+          currentTree = currentTree.m_Successors[0];
         } else {
-          returnedDist = m_Successors[1].distributionForInstance(instance);
+          currentTree = currentTree.m_Successors[1];
         }
-
-
-      } else { // ------------------------------------------ numeric attributes
-
-        if (instance.value(m_Attribute) < m_SplitPoint) {
-          returnedDist = m_Successors[0].distributionForInstance(instance);
+      } else { //numeric attributes
+        if (instance.value(currentTree.m_Attribute) < currentTree.m_SplitPoint) {
+          currentTree = currentTree.m_Successors[0];
         } else {
-          returnedDist = m_Successors[1].distributionForInstance(instance);
+          currentTree = currentTree.m_Successors[1];
         }
       }
-
-      return returnedDist;
-
-    } else { // =============================================== node is a leaf
-
-      return m_ClassProbs;
-
     }
 
+    return currentTree.m_ClassProbs;
   }
 
 
@@ -307,54 +290,38 @@ class FastRandomTree
    * @throws Exception if computation fails
    */
   public double[] distributionForInstanceInDataCache(DataCache data, int instIdx) {
+    FastRandomTree currentTree = this;
 
-    double[] returnedDist = null;
-
-    if (m_Attribute > -1) {  // ============================ node is not a leaf
-
-      if ( data.isValueMissing(m_Attribute, instIdx) ) {  // ---------------- missing value
-
-        returnedDist = new double[m_MotherForest.m_Info.numClasses()];
+    while (currentTree.m_Attribute > -1) { //while the current tree is not a leaf
+      if (data.isValueMissing(currentTree.m_Attribute, instIdx)) { // missing value
+        double[] returnedDist = new double[m_MotherForest.m_Info.numClasses()];
         // split instance up
-        for (int i = 0; i < m_Successors.length; i++) {
-          double[] help = m_Successors[i].distributionForInstanceInDataCache(data, instIdx);
+        for (int i = 0; i < currentTree.m_Successors.length; i++) {
+          double[] help = currentTree.m_Successors[i].distributionForInstanceInDataCache(data, instIdx);
           if (help != null) {
             for (int j = 0; j < help.length; j++) {
-              returnedDist[j] += m_Prop[i] * help[j];
+              returnedDist[j] += currentTree.m_Prop[i] * help[j];
             }
           }
         }
-
-      } else if ( data.isAttrNominal(m_Attribute) ) { // ------ nominal
-
-        //returnedDist = m_Successors[(int) instance.value(m_Attribute)]
-        //        .distributionForInstance(instance);
-
+        return returnedDist;
+      } else if (data.isAttrNominal(currentTree.m_Attribute)) { //nominal attributes
         // 0.99: new - binary splits (also) for nominal attributes
-        if ( data.vals[m_Attribute][instIdx] == m_SplitPoint ) {
-          returnedDist = m_Successors[0].distributionForInstanceInDataCache(data, instIdx);
+        if (data.vals[currentTree.m_Attribute][instIdx] == currentTree.m_SplitPoint) {
+          currentTree = currentTree.m_Successors[0];
         } else {
-          returnedDist = m_Successors[1].distributionForInstanceInDataCache(data, instIdx);
+          currentTree = currentTree.m_Successors[1];
         }
-
-
-      } else { // ------------------------------------------ numeric attributes
-
-        if ( data.vals[m_Attribute][instIdx] < m_SplitPoint) {
-          returnedDist = m_Successors[0].distributionForInstanceInDataCache(data, instIdx);
+      } else { //numeric attributes
+        if (data.vals[currentTree.m_Attribute][instIdx] < currentTree.m_SplitPoint) {
+          currentTree = currentTree.m_Successors[0];
         } else {
-          returnedDist = m_Successors[1].distributionForInstanceInDataCache(data, instIdx);
+          currentTree = currentTree.m_Successors[1];
         }
       }
-
-      return returnedDist;
-
-    } else { // =============================================== node is a leaf
-
-      return m_ClassProbs;
-
     }
 
+    return currentTree.m_ClassProbs;
   }
 
 
